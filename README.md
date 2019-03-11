@@ -22,7 +22,7 @@ Install Emscripten (in case you don't already have it) by following the official
 
 https://emscripten.org/docs/getting_started/downloads.html
 
-Install node packages by doing npm start
+Install node packages by doing npm install
 
 And you are all set to go!!
 
