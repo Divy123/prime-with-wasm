@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script> -->
+</head>
+<body>
+    <h1>Web Assembly</h1>
+</body>
+<script src = "prime.js"></script>
+<script>
+function isPrime( num){
+    if(num == 1 || num == 0){
+        return 0
+    }
+    for(var i = 2; i<num; i++ )
+        if(num%i == 0) return 0;
+    return 1; 
+}
+
+function numPrimes( lim){
+    var count =0;
+    for(var i = 1; i<=lim; i++ ){
+        if(isPrime(i)) count++;
+    }
+    return count;
+}
+
+Module['onRuntimeInitialized']=()=>{
+    let primes = 200000
+    let jsStart = performance.now()
+    let jsPrimes = numPrimes(primes);
+    console.log("js",jsPrimes,Math.round(performance.now()-jsStart)/1000);
+
+    let CStart = performance.now()
+    let cPrimes = _numPrimes(primes);
+    console.log("C",cPrimes,Math.round(performance.now()-CStart)/1000);
+}
+</script>
+</html>
